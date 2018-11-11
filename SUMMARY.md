@@ -2,7 +2,7 @@
 
 * [Getting Started](pages/getting-started.md)
 * [Data analysis tutorial]()
-     * [Data cleaning]()
+     * [Data cleaning](pages/python-datacleaning.md)
      * [Data manipulation]()
      * [Visualisation]()
 * [Web scraping]()
