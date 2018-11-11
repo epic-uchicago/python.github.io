@@ -1,0 +1,655 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Data cleaning · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="python-datamanipulation.html" />
+    
+    
+    <link rel="prev" href="../python.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="getting-started.html">
+            
+                <a href="getting-started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../python.md">
+            
+                <span>
+            
+                    
+                    Data analysis tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="python-datacleaning.html">
+            
+                <a href="python-datacleaning.html">
+            
+                    
+                    Data cleaning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="python-datamanipulation.html">
+            
+                <a href="python-datamanipulation.html">
+            
+                    
+                    Data manipulation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="python-datavis.html">
+            
+                <a href="python-datavis.html">
+            
+                    
+                    Visualisation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Web scraping
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="webscraping-naive.html">
+            
+                <a href="webscraping-naive.html">
+            
+                    
+                    Naive method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="webscraping-advanced.html">
+            
+                <a href="webscraping-advanced.html">
+            
+                    
+                    Advanced method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="oop-python.html">
+            
+                <a href="oop-python.html">
+            
+                    
+                    Object-Oriented Python
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="python-circle.html">
+            
+                <a href="python-circle.html">
+            
+                    
+                    Circle Object
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Data cleaning</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="data-cleaning">Data Cleaning</h2>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np 
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> datetime <span class="hljs-keyword">as</span> dt
+<span class="hljs-keyword">import</span> getpass
+<span class="hljs-keyword">import</span> math
+
+<span class="hljs-keyword">if</span> getpass.getuser()==<span class="hljs-string">&quot;nadialucas&quot;</span>:
+    dbPath = <span class="hljs-string">r&quot;/Users/nadialucas/Dropbox/epic_predoc_resources/epic_orientation&quot;</span>
+<span class="hljs-keyword">else</span>:
+  print(<span class="hljs-string">&quot;please add your machine&apos;s directory&quot;</span>)
+
+
+<span class="hljs-comment"># Set directory paths</span>
+dataPath = <span class="hljs-string">r&quot;{}/data/Python_R_Puerto_Rico&quot;</span>.format(dbPath)
+
+<span class="hljs-comment"># read in </span>
+media_trump_filename = <span class="hljs-string">r&quot;{}/mediacloud_trump.csv&quot;</span>.format(dataPath)
+google_trends_filename = <span class="hljs-string">r&quot;{}/google_trends.csv&quot;</span>.format(dataPath)
+media_states_filename = <span class="hljs-string">r&quot;{}/mediacloud_states.csv&quot;</span>.format(dataPath)
+media_hurricanes_filename = <span class="hljs-string">r&quot;{}/mediacloud_hurricanes.csv&quot;</span>.format(dataPath)
+tv_hurricanes_filename = <span class="hljs-string">r&quot;{}/tv_hurricanes.csv&quot;</span>.format(dataPath)
+tv_hurricanes_by_network_filename = <span class="hljs-string">r&quot;{}/tv_hurricanes_by_network.csv&quot;</span>.format(dataPath)
+</code></pre>
+<h3 id="pandas">Pandas</h3>
+<p>Pandas is an open-source package that has been written for Python that builds off of existing data structures. Some basic data structures underlying pandas dataframes are arrays (specifically ndarrays) and dictionaries.</p>
+<h4 id="arrays">Arrays</h4>
+<p>Arrays are lists of objects. Arrays are quite flexible and can contain any different data types. Functions can be powerfully mapped onto arrays. Some of you may find this similar to Stata where manipulating data is done on a &apos;per variable&apos; basis.</p>
+<h4 id="dictionaries">Dictionaries</h4>
+<p>Dictionaries, otherwise known as hash tables, are mappings of key, value pairs. They provide very fast lookup time and can store a lot of data.</p>
+<h4 id="pandas-dataframes">Pandas Dataframes</h4>
+<p>Pandas Dataframes are <a href="https://pandas.pydata.org/pandas-docs/stable/dsintro.html" target="_blank">data structures</a> that are built off of arrays (specifically ndarrays) and dictionaries. They are very flexible and can be created either by using dictionaries of arrays or by arrays of dictionaries. Python is pretty smart and can usually figure out what you are trying to pass into it.</p>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python">dict_of_arrays = {<span class="hljs-string">&apos;id&apos;</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>], 
+                <span class="hljs-string">&apos;Name&apos;</span>: [<span class="hljs-string">&apos;Trin&apos;</span>, <span class="hljs-string">&apos;Henry&apos;</span>, <span class="hljs-string">&apos;Andrew&apos;</span>, <span class="hljs-string">&apos;Sunny&apos;</span>,<span class="hljs-string">&apos;Kotia&apos;</span>], 
+                <span class="hljs-string">&apos;Hometown&apos;</span>: [<span class="hljs-string">&apos;SINGAPORE&apos;</span>, <span class="hljs-string">&apos;DENVER&apos;</span>, <span class="hljs-string">&apos;HOUSTON&apos;</span>, <span class="hljs-string">&apos;PROVIDENCE&apos;</span>, <span class="hljs-string">&apos;NEW DELHI&apos;</span>]}
+pd_doa = pd.DataFrame(dict_of_arrays)
+print(pd_doa.head())
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hometown</th>
+<th>Name</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>SINGAPORE</td>
+<td>Trin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>DENVER</td>
+<td>Henry</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HOUSTON</td>
+<td>Andrew</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PROVIDENCE</td>
+<td>Sunny</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NEW DELHI</td>
+<td>Kotia</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python">array_of_dicts = [{<span class="hljs-string">&apos;id&apos;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&apos;Name&apos;</span>: <span class="hljs-string">&apos;Trin&apos;</span>, <span class="hljs-string">&apos;Hometown&apos;</span>: <span class="hljs-string">&apos;SINGAPORE&apos;</span>},
+                  {<span class="hljs-string">&apos;id&apos;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&apos;Name&apos;</span>: <span class="hljs-string">&apos;Henry&apos;</span>, <span class="hljs-string">&apos;Hometown&apos;</span>: <span class="hljs-string">&apos;DENVER&apos;</span>},
+                  {<span class="hljs-string">&apos;id&apos;</span>: <span class="hljs-number">3</span>, <span class="hljs-string">&apos;Name&apos;</span>: <span class="hljs-string">&apos;Andrew&apos;</span>, <span class="hljs-string">&apos;Hometown&apos;</span>: <span class="hljs-string">&apos;HOUSTON&apos;</span>},
+                  {<span class="hljs-string">&apos;id&apos;</span>: <span class="hljs-number">4</span>, <span class="hljs-string">&apos;Name&apos;</span>: <span class="hljs-string">&apos;Sunny&apos;</span>, <span class="hljs-string">&apos;Hometown&apos;</span>: <span class="hljs-string">&apos;PROVIDENCE&apos;</span>},
+                  {<span class="hljs-string">&apos;id&apos;</span>: <span class="hljs-number">5</span>, <span class="hljs-string">&apos;Name&apos;</span>: <span class="hljs-string">&apos;Kotia&apos;</span>, <span class="hljs-string">&apos;Hometown&apos;</span>: <span class="hljs-string">&apos;NEW DELHI&apos;</span>}]
+pd_aod = pd.DataFrame(array_of_dicts)
+print(pd_aod.head())
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hometown</th>
+<th>Name</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>SINGAPORE</td>
+<td>Trin</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>DENVER</td>
+<td>Henry</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HOUSTON</td>
+<td>Andrew</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PROVIDENCE</td>
+<td>Sunny</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NEW DELHI</td>
+<td>Kotia</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reading-in-data">Reading in Data</h3>
+<p>Of course, there are built-in funtions that read data from outside files as pandas objects, which is what you&apos;ll end up needing to do but understanding the basic data structures pandas dataframes are built off of will help you understand the syntax of using and manipulating these data structures.</p>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python"><span class="hljs-comment"># we create the object media_trump which is an instance of a pandas dataframe</span>
+media_trump = pd.read_csv(media_trump_filename)
+google_trends = pd.read_csv(google_trends_filename)
+media_states = pd.read_csv(media_states_filename)
+media_hurricanes = pd.read_csv(media_hurricanes_filename)
+tv_hurricanes = pd.read_csv(tv_hurricanes_filename)
+tv_hurricanes_by_network = pd.read_csv(tv_hurricanes_by_network_filename)
+
+print(google_trends.head())
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Day</th>
+<th>&quot;Hurricane Harvey&quot;: (United States)</th>
+<th>&quot;Hurricane Irma&quot;: (United States)</th>
+<th>&quot;Hurricane Maria&quot;: (United States)</th>
+<th>&quot;Hurricane Jose&quot;: (United States)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8/20/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8/21/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8/22/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0 </td>
+</tr>
+<tr>
+<td>3</td>
+<td>8/23/17</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0 </td>
+</tr>
+<tr>
+<td>4</td>
+<td>8/24/17</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cleaning-data">Cleaning Data</h2>
+<h1 id="for-some-reason-the-csvs-we-read-in-sometimes-has-wonky-or-long-variable-titles-so-lets-clean-those-up">For some reason the csvs we read in sometimes has wonky or long variable titles so let&apos;s clean those up</h1>
+<h1 id="and-make-sure-to-get-rid-of-random-quotation-marks-we-find">and make sure to get rid of random quotation marks we find.</h1>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python">media_trump = media_trump.rename(columns = {<span class="hljs-string">&apos;title:&quot;Puerto Rico&quot;&apos;</span>: <span class="hljs-string">&apos;PuertoRico&apos;</span>,
+                                 <span class="hljs-string">&apos;title:&quot;Puerto Rico&quot; AND (title:Trump OR title:President)&apos;</span>: <span class="hljs-string">&apos;PuertoRico_Trump&apos;</span>,
+                                 <span class="hljs-string">&apos;title:Florida&apos;</span>: <span class="hljs-string">&apos;Florida&apos;</span>,
+                                 <span class="hljs-string">&apos;title:Florida AND (title:Trump OR title:President)&apos;</span>: <span class="hljs-string">&apos;Florida_Trump&apos;</span>, 
+                                 <span class="hljs-string">&apos;title:Texas&apos;</span>: <span class="hljs-string">&apos;Texas&apos;</span>,
+                                 <span class="hljs-string">&apos;title:Texas AND (title:Trump OR title:President)&apos;</span>: <span class="hljs-string">&apos;Texas_Trump&apos;</span>})
+
+google_trends = google_trends.rename({<span class="hljs-string">&apos;&quot;Hurricane Harvey&quot;: (United States)&apos;</span>: <span class="hljs-string">&apos;Harvey_US&apos;</span>,
+                                    <span class="hljs-string">&apos;&quot;Hurricane Irma&quot;: (United States)&apos;</span>: <span class="hljs-string">&apos;Irma_US&apos;</span>,
+                                    <span class="hljs-string">&apos;&quot;Hurricane Maria&quot;: (United States)&apos;</span>: <span class="hljs-string">&apos;Maria_US&apos;</span>,
+                                    <span class="hljs-string">&apos;&quot;Hurricane Jose&quot;: (United States)&apos;</span>: <span class="hljs-string">&apos;Jose_US&apos;</span>,
+                                    <span class="hljs-string">&apos;&quot;Puerto Rico&quot;&apos;</span>: <span class="hljs-string">&apos;Puerto Rico&apos;</span>}, axis = <span class="hljs-string">&apos;columns&apos;</span>)
+print(google_trends.head())
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Day</th>
+<th>Harvey_US</th>
+<th>Irma_US</th>
+<th>Maria_US</th>
+<th>Jose_US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8/20/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8/21/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8/22/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8/23/17</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8/24/17</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../python.md" class="navigation navigation-prev " aria-label="Previous page: Data analysis tutorial">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="python-datamanipulation.html" class="navigation navigation-next " aria-label="Next page: Data manipulation">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Data cleaning","level":"1.3.1","depth":2,"next":{"title":"Data manipulation","level":"1.3.2","depth":2,"path":"pages/python-datamanipulation.md","ref":"pages/python-datamanipulation.md","articles":[]},"previous":{"title":"Data analysis tutorial","level":"1.3","depth":1,"path":"python.md","ref":"python.md","articles":[{"title":"Data cleaning","level":"1.3.1","depth":2,"path":"pages/python-datacleaning.md","ref":"pages/python-datacleaning.md","articles":[]},{"title":"Data manipulation","level":"1.3.2","depth":2,"path":"pages/python-datamanipulation.md","ref":"pages/python-datamanipulation.md","articles":[]},{"title":"Visualisation","level":"1.3.3","depth":2,"path":"pages/python-datavis.md","ref":"pages/python-datavis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/python-datacleaning.md","mtime":"2018-11-11T21:31:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

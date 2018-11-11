@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · GitBook</title>
+        <title>Data manipulation · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../python.md" />
+    <link rel="next" href="python-datavis.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="python-datacleaning.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="getting-started.html">
+        <li class="chapter " data-level="1.2" data-path="getting-started.html">
             
                 <a href="getting-started.html">
             
@@ -142,7 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="python-datamanipulation.html">
+        <li class="chapter active" data-level="1.3.2" data-path="python-datamanipulation.html">
             
                 <a href="python-datamanipulation.html">
             
@@ -280,7 +280,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Getting Started</a>
+        <a href=".." >Data manipulation</a>
     </h1>
 </div>
 
@@ -295,12 +295,252 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-general-reserach-workflow">Introduction: General reserach workflow</h1>
-<h2 id="step-1-collect-data">Step 1: Collect data</h2>
-<p>These are historical weather data and outcome data.</p>
-<h2 id="step-2-include-other-data-ie-income">Step 2: Include other data, ie. income</h2>
-<h2 id="step-3-projection">Step 3: Projection</h2>
-<h2 id="step-4-estimate-damage">Step 4: Estimate damage</h2>
+                                <h2 id="indexing-data">Indexing Data</h2>
+<p>You can use .loc to index both rows and columns by name. Syntax is </p>
+<pre><code>df.loc[row_begin : row_end, column_begin : column_end]
+df.loc[[row_1, row_2, ...], [column_1, column_2, ...]]
+</code></pre><p>You can use .iloc to index both rows and columns by index instead of name with the same syntax.</p>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python">loc_slice = google_trends.loc[:, [<span class="hljs-string">&apos;Day&apos;</span>, <span class="hljs-string">&apos;Harvey_US&apos;</span>]]
+
+print(loc_slice[:<span class="hljs-number">5</span>])
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Day</th>
+<th>Harvey_US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8/20/17</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8/21/17</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8/22/17</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8/23/17</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8/24/17</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python">iloc_slice = google_trends.iloc[:<span class="hljs-number">6</span>, <span class="hljs-number">0</span>:<span class="hljs-number">4</span>]
+
+print(iloc_slice)
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Day</th>
+<th>Harvey_US</th>
+<th>Irma_US</th>
+<th>Maria_US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8/20/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8/21/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8/22/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8/23/17</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8/24/17</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>8/25/17</td>
+<td>29</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="masking">Masking</h2>
+<p>A function to find and replace all observations that meet a certain criterion using boolean logic. The following code shows how you slice the variable in question and then apply a mask to just that variable and add it back into the dataframe. You can also apply a mask to an entire dataframe which would find and then replace all rows instead of singular observations.</p>
+<p>Note: We first create a copy of the dataframe we can manipulate so we don&apos;t affect later code that uses the original. We have to use the copy() function to replicate the dataframe entirely, otherwise we would just be setting the two variable name pointers equal to each other and manipulating the original dataframe anyways.</p>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python">google_trends_copy = google_trends.copy()
+mask = google_trends_copy.Irma_US.mask(google_trends_copy.Irma_US&gt;<span class="hljs-number">20</span>, <span class="hljs-number">1000</span>)
+google_trends_copy[<span class="hljs-string">&quot;Irma_US&quot;</span>] = mask
+print(google_trends_copy[<span class="hljs-number">12</span>:<span class="hljs-number">18</span>])
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Day</th>
+<th>Harvey_US</th>
+<th>Irma_US</th>
+<th>Maria_US</th>
+<th>Jose_US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>9/1/17</td>
+<td>7</td>
+<td>14</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>9/2/17</td>
+<td>5</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>9/3/17</td>
+<td>4</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>9/4/17</td>
+<td>3</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9/5/17</td>
+<td>4</td>
+<td>1000</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>17</td>
+<td>9/6/17</td>
+<td>4</td>
+<td>1000</td>
+<td>0</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functionals">Functionals</h2>
+<h5 id="in">In:</h5>
+<pre><code class="lang-python"><span class="hljs-comment"># the dataframe is generally very flexible so in the case we want</span>
+<span class="hljs-comment"># to plot date objects on the x-axis we can remove dates as a vector</span>
+<span class="hljs-comment"># and do a list functional</span>
+<span class="hljs-comment"># pandas is known for its time series functionality</span>
+google_trends_dates = google_trends[<span class="hljs-string">&apos;Day&apos;</span>]
+<span class="hljs-comment"># the following is a list functional</span>
+google_trends_date_objects = [dt.datetime.strptime(d,<span class="hljs-string">&apos;%m/%d/%y&apos;</span>).date() <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> google_trends_dates]
+print(google_trends.head())
+</code></pre>
+<h5 id="out">Out:</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Day</th>
+<th>Harvey_US</th>
+<th>Irma_US</th>
+<th>Maria_US</th>
+<th>Jose_US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8/20/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8/21/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8/22/17</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8/23/17</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8/24/17</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -328,12 +568,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="python-datacleaning.html" class="navigation navigation-prev " aria-label="Previous page: Data cleaning">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../python.md" class="navigation navigation-next " aria-label="Next page: Data analysis tutorial">
+                <a href="python-datavis.html" class="navigation navigation-next " aria-label="Next page: Visualisation">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -344,7 +584,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2","depth":1,"next":{"title":"Data analysis tutorial","level":"1.3","depth":1,"path":"python.md","ref":"python.md","articles":[{"title":"Data cleaning","level":"1.3.1","depth":2,"path":"pages/python-datacleaning.md","ref":"pages/python-datacleaning.md","articles":[]},{"title":"Data manipulation","level":"1.3.2","depth":2,"path":"pages/python-datamanipulation.md","ref":"pages/python-datamanipulation.md","articles":[]},{"title":"Visualisation","level":"1.3.3","depth":2,"path":"pages/python-datavis.md","ref":"pages/python-datavis.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/getting-started.md","mtime":"2018-11-11T20:10:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data manipulation","level":"1.3.2","depth":2,"next":{"title":"Visualisation","level":"1.3.3","depth":2,"path":"pages/python-datavis.md","ref":"pages/python-datavis.md","articles":[]},"previous":{"title":"Data cleaning","level":"1.3.1","depth":2,"path":"pages/python-datacleaning.md","ref":"pages/python-datacleaning.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/python-datamanipulation.md","mtime":"2018-11-11T21:27:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

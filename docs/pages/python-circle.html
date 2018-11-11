@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · GitBook</title>
+        <title>Circle Object · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../python.md" />
     
-    
-    <link rel="prev" href="../" />
+    <link rel="prev" href="oop-python.html" />
     
 
     </head>
@@ -102,7 +100,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="getting-started.html">
+        <li class="chapter " data-level="1.2" data-path="getting-started.html">
             
                 <a href="getting-started.html">
             
@@ -232,7 +230,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="python-circle.html">
+        <li class="chapter active" data-level="1.5.1" data-path="python-circle.html">
             
                 <a href="python-circle.html">
             
@@ -280,7 +278,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Getting Started</a>
+        <a href=".." >Circle Object</a>
     </h1>
 </div>
 
@@ -295,12 +293,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-general-reserach-workflow">Introduction: General reserach workflow</h1>
-<h2 id="step-1-collect-data">Step 1: Collect data</h2>
-<p>These are historical weather data and outcome data.</p>
-<h2 id="step-2-include-other-data-ie-income">Step 2: Include other data, ie. income</h2>
-<h2 id="step-3-projection">Step 3: Projection</h2>
-<h2 id="step-4-estimate-damage">Step 4: Estimate damage</h2>
+                                <pre><code class="lang-python"><span class="hljs-comment"># A short and sweet class to understand functionality</span>
+<span class="hljs-keyword">import</span> math
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span> <span class="hljs-params">(self, radius, centroid)</span>:</span>
+        self.radius = radius
+        self.centroid_x = centroid[<span class="hljs-number">0</span>]
+        self.centroid_y = centroid[<span class="hljs-number">1</span>]
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> math.pi * self.radius**<span class="hljs-number">2</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">intersects</span><span class="hljs-params">(self, other_circle)</span>:</span>
+        centroid_dist = math.sqrt((self.centroid_x-other_circle.centroid_x)**<span class="hljs-number">2</span> + (self.centroid_y-other_circle.centroid_y)**<span class="hljs-number">2</span>)
+        radius_dist = self.radius + other_circle.radius
+        <span class="hljs-keyword">return</span> radius_dist &gt;= centroid_dist
+
+
+obj = Circle(<span class="hljs-number">2</span>, (<span class="hljs-number">0</span>,<span class="hljs-number">1</span>))
+
+print(obj.radius)
+print(obj.get_area())
+
+other_circle = Circle(<span class="hljs-number">3</span>, (<span class="hljs-number">0</span>,<span class="hljs-number">6</span>))
+print(obj.intersects(other_circle))
+</code></pre>
 
                                 
                                 </section>
@@ -328,14 +346,10 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="oop-python.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Object-Oriented Python">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../python.md" class="navigation navigation-next " aria-label="Next page: Data analysis tutorial">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -344,7 +358,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2","depth":1,"next":{"title":"Data analysis tutorial","level":"1.3","depth":1,"path":"python.md","ref":"python.md","articles":[{"title":"Data cleaning","level":"1.3.1","depth":2,"path":"pages/python-datacleaning.md","ref":"pages/python-datacleaning.md","articles":[]},{"title":"Data manipulation","level":"1.3.2","depth":2,"path":"pages/python-datamanipulation.md","ref":"pages/python-datamanipulation.md","articles":[]},{"title":"Visualisation","level":"1.3.3","depth":2,"path":"pages/python-datavis.md","ref":"pages/python-datavis.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/getting-started.md","mtime":"2018-11-11T20:10:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Circle Object","level":"1.5.1","depth":2,"previous":{"title":"Object-Oriented Python","level":"1.5","depth":1,"path":"pages/oop-python.md","ref":"pages/oop-python.md","articles":[{"title":"Circle Object","level":"1.5.1","depth":2,"path":"pages/python-circle.md","ref":"pages/python-circle.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/python-circle.md","mtime":"2018-11-11T21:43:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

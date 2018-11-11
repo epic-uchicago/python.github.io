@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · GitBook</title>
+        <title>Naive method · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../python.md" />
+    <link rel="next" href="webscraping-advanced.html" />
     
-    
-    <link rel="prev" href="../" />
     
 
     </head>
@@ -102,7 +100,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="getting-started.html">
+        <li class="chapter " data-level="1.2" data-path="getting-started.html">
             
                 <a href="getting-started.html">
             
@@ -187,7 +185,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="webscraping-naive.html">
+        <li class="chapter active" data-level="1.4.1" data-path="webscraping-naive.html">
             
                 <a href="webscraping-naive.html">
             
@@ -280,7 +278,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Getting Started</a>
+        <a href=".." >Naive method</a>
     </h1>
 </div>
 
@@ -295,12 +293,65 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-general-reserach-workflow">Introduction: General reserach workflow</h1>
-<h2 id="step-1-collect-data">Step 1: Collect data</h2>
-<p>These are historical weather data and outcome data.</p>
-<h2 id="step-2-include-other-data-ie-income">Step 2: Include other data, ie. income</h2>
-<h2 id="step-3-projection">Step 3: Projection</h2>
-<h2 id="step-4-estimate-damage">Step 4: Estimate damage</h2>
+                                <pre><code class="lang-python"><span class="hljs-comment">#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#</span>
+<span class="hljs-comment">## Purpose: scrape data files for the RA Data Project</span>
+<span class="hljs-comment"># http://www.jasmiths.com/</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## Author: Andrew Smith (jas3@uchicago.edu)</span>
+<span class="hljs-comment">#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#</span>
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> shutil
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> Select
+<span class="hljs-keyword">from</span> selenium.webdriver.chrome.options <span class="hljs-keyword">import</span> Options
+<span class="hljs-keyword">from</span> selenium.webdriver.support.wait <span class="hljs-keyword">import</span> WebDriverWait
+<span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions <span class="hljs-keyword">as</span> EC
+<span class="hljs-keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="hljs-keyword">import</span> DesiredCapabilities
+<span class="hljs-keyword">from</span> selenium.common.exceptions <span class="hljs-keyword">import</span> NoSuchElementException, TimeoutException, NoSuchFrameException, WebDriverException
+
+path = <span class="hljs-string">&quot;/Users/nadialucas/Dropbox/epic_task/rawdata/txt&quot;</span>
+os.chdir(path)
+
+<span class="hljs-comment"># Removing files from directory (if necessary)</span>
+files = [<span class="hljs-string">&quot;demographics.txt&quot;</span>,<span class="hljs-string">&quot;house_age1.txt&quot;</span>,<span class="hljs-string">&quot;house_age2.txt&quot;</span>,<span class="hljs-string">&quot;house_chars1.txt&quot;</span>,<span class="hljs-string">&quot;house_chars2.txt&quot;</span>,<span class="hljs-string">&quot;sample82.txt&quot;</span>]
+<span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> files:
+    filepath = os.path.join(path, f)
+
+    <span class="hljs-keyword">if</span> os.path.exists(filepath):
+        os.remove(filepath)
+
+<span class="hljs-comment"># Setting wait time, search engine in use</span>
+waiting = <span class="hljs-number">10</span>
+engine = <span class="hljs-string">&apos;chrome&apos;</span>
+
+<span class="hljs-comment"># Setting downloading preferences</span>
+chromeOptions = Options()
+prefs = {<span class="hljs-string">&quot;download.default_directory&quot;</span> : path}
+chromeOptions.add_experimental_option(<span class="hljs-string">&quot;prefs&quot;</span>,prefs)
+
+<span class="hljs-comment"># Driver info</span>
+chromedriver = <span class="hljs-string">&quot;/Users/nadialucas/anaconda/bin/chromedriver&quot;</span>
+driver = webdriver.Chrome(executable_path = chromedriver, chrome_options = chromeOptions)
+
+print(<span class="hljs-string">&apos;Opening Chrome&apos;</span>)
+driver.get(<span class="hljs-string">&quot;http://www.jasmiths.com/data_project&quot;</span>)
+
+<span class="hljs-comment"># Downloading data</span>
+print(<span class="hljs-string">&quot;Downloading Data Files&quot;</span>)
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(files)):
+        <span class="hljs-comment"># Clicking on the download link</span>
+        WebDriverWait(driver,waiting).until(EC.element_to_be_clickable((By.XPATH,<span class="hljs-string">&quot;&quot;&quot;/html/body/main/div/ol/li[{}]/a&quot;&quot;&quot;</span>.format(i+<span class="hljs-number">1</span>)))).click()
+
+        <span class="hljs-comment"># We wait to perform another task so that we have ample time to download the files</span>
+        time.sleep(waiting)
+
+
+print(<span class="hljs-string">&quot;Quitting Chrome&quot;</span>)
+driver.quit()
+</code></pre>
 
                                 
                                 </section>
@@ -328,12 +379,8 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="../python.md" class="navigation navigation-next " aria-label="Next page: Data analysis tutorial">
+                <a href="webscraping-advanced.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Advanced method">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -344,7 +391,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2","depth":1,"next":{"title":"Data analysis tutorial","level":"1.3","depth":1,"path":"python.md","ref":"python.md","articles":[{"title":"Data cleaning","level":"1.3.1","depth":2,"path":"pages/python-datacleaning.md","ref":"pages/python-datacleaning.md","articles":[]},{"title":"Data manipulation","level":"1.3.2","depth":2,"path":"pages/python-datamanipulation.md","ref":"pages/python-datamanipulation.md","articles":[]},{"title":"Visualisation","level":"1.3.3","depth":2,"path":"pages/python-datavis.md","ref":"pages/python-datavis.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/getting-started.md","mtime":"2018-11-11T20:10:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Naive method","level":"1.4.1","depth":2,"next":{"title":"Advanced method","level":"1.4.2","depth":2,"path":"pages/webscraping-advanced.md","ref":"pages/webscraping-advanced.md","articles":[]},"previous":{"title":"Web scraping","level":"1.4","depth":1,"ref":"","articles":[{"title":"Naive method","level":"1.4.1","depth":2,"path":"pages/webscraping-naive.md","ref":"pages/webscraping-naive.md","articles":[]},{"title":"Advanced method","level":"1.4.2","depth":2,"path":"pages/webscraping-advanced.md","ref":"pages/webscraping-advanced.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/webscraping-naive.md","mtime":"2018-11-11T21:46:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T21:56:45.403Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
