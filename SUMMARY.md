@@ -1,4 +1,11 @@
 # Table of content
 
 * [Getting Started](pages/getting-started.md)
-* [Literature](pages/literature.md)
+* [Data analysis tutorial]()
+     * [Data cleaning]()
+     * [Data manipulation]()
+     * [Visualisation]()
+* [Web scraping]()
+     * [Naive method]()
+     * [Advanced method]()
+* [Object-Oriented Python]()
