@@ -1,7 +1,7 @@
 # Table of content
 
 * [Getting Started](pages/getting-started.md)
-* [Data analysis tutorial](python.md)
+* [Data analysis tutorial](pages/python.md)
      * [Data cleaning](pages/python-datacleaning.md)
      * [Data manipulation](pages/python-datamanipulation.md)
      * [Visualisation](pages/python-datavis.md)
