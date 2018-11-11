@@ -1,11 +1,12 @@
 # Table of content
 
 * [Getting Started](pages/getting-started.md)
-* [Data analysis tutorial]()
+* [Data analysis tutorial](python.md)
      * [Data cleaning](pages/python-datacleaning.md)
-     * [Data manipulation]()
-     * [Visualisation]()
+     * [Data manipulation](pages/python-datamanipulation.md)
+     * [Visualisation](pages/python-datavis.md)
 * [Web scraping]()
-     * [Naive method]()
-     * [Advanced method]()
-* [Object-Oriented Python]()
+     * [Naive method](pages/webscraping-naive.md)
+     * [Advanced method](pages/webscraping-advanced.md)
+* [Object-Oriented Python](pages/oop-python.md)
+     * [Circle Object](pages/python-circle.md)
