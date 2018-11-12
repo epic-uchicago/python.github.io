@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · GitBook</title>
+        <title>Jupyter notebooks · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="python.html" />
     
-    
-    <link rel="prev" href="../" />
+    <link rel="prev" href="python-circle.html" />
     
 
     </head>
@@ -102,20 +100,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="getting-started.html">
-            
-                <a href="getting-started.html">
-            
-                    
-                    Getting Started
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="python.html">
+        <li class="chapter " data-level="1.2" data-path="python.html">
             
                 <a href="python.html">
             
@@ -129,7 +114,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="python-datacleaning.html">
+        <li class="chapter " data-level="1.2.1" data-path="python-datacleaning.html">
             
                 <a href="python-datacleaning.html">
             
@@ -142,7 +127,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="python-datamanipulation.html">
+        <li class="chapter " data-level="1.2.2" data-path="python-datamanipulation.html">
             
                 <a href="python-datamanipulation.html">
             
@@ -155,7 +140,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="python-datavis.html">
+        <li class="chapter " data-level="1.2.3" data-path="python-datavis.html">
             
                 <a href="python-datavis.html">
             
@@ -173,7 +158,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" >
+        <li class="chapter " data-level="1.3" >
             
                 <span>
             
@@ -187,7 +172,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="webscraping-naive.html">
+        <li class="chapter " data-level="1.3.1" data-path="webscraping-naive.html">
             
                 <a href="webscraping-naive.html">
             
@@ -200,7 +185,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="webscraping-advanced.html">
+        <li class="chapter " data-level="1.3.2" data-path="webscraping-advanced.html">
             
                 <a href="webscraping-advanced.html">
             
@@ -218,7 +203,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="oop-python.html">
+        <li class="chapter " data-level="1.4" data-path="oop-python.html">
             
                 <a href="oop-python.html">
             
@@ -232,7 +217,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="python-circle.html">
+        <li class="chapter " data-level="1.4.1" data-path="python-circle.html">
             
                 <a href="python-circle.html">
             
@@ -247,6 +232,19 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="jupyter.html">
+            
+                <a href="jupyter.html">
+            
+                    
+                    Jupyter notebooks
+            
+                </a>
+            
+
             
         </li>
     
@@ -280,7 +278,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Getting Started</a>
+        <a href=".." >Jupyter notebooks</a>
     </h1>
 </div>
 
@@ -295,12 +293,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-general-reserach-workflow">Introduction: General reserach workflow</h1>
-<h2 id="step-1-collect-data">Step 1: Collect data</h2>
-<p>These are historical weather data and outcome data.</p>
-<h2 id="step-2-include-other-data-ie-income">Step 2: Include other data, ie. income</h2>
-<h2 id="step-3-projection">Step 3: Projection</h2>
-<h2 id="step-4-estimate-damage">Step 4: Estimate damage</h2>
+                                <h1 id="jupyter-notebooks">Jupyter notebooks</h1>
+<p>Jupyter notebooks are <strong>fun and easy</strong> way to run python code locally. 
+They are excellent for documenting code, which will allow you to easily access, run and <strong>understand you code</strong> in the future.</p>
+<blockquote>
+<p>They allow you to edit code in the browser, with automatic syntax highlighting, indentation, and tab completion/introspection.
+Run code from the browser, with the results of computations attached to the code which generated them.
+See the results of computations with rich media representations, such as HTML, LaTeX, PNG, SVG, PDF, etc.
+Create and use interactive JavaScript widgets, which bind interactive user interface controls and visualizations to reactive kernel side computations.
+Author narrative text using the Markdown markup language.
+Include mathematical equations using LaTeX syntax in Markdown, which are rendered in-browser by MathJax.</p>
+</blockquote>
+<h2 id="install">Install</h2>
+<p>Install the notebook with:</p>
+<pre><code>python -m pip install --upgrade pip
+python -m pip install jupyter
+</code></pre><h2 id="create-first-notebook">Create first notebook</h2>
+<p>Run the notebook with:</p>
+<pre><code>jupyter notebook
+</code></pre><p>This is how a jupyter dashboard looks like:</p>
+<p><img src="https://jupyter.readthedocs.io/en/latest/_images/tryjupyter_file.png" alt=""></p>
+<p>Create a new notebook by clicking on the following button: </p>
+<p><img src="https://jupyter-notebook.readthedocs.io/en/stable/_images/dashboard_files_tab_new.png" alt=""></p>
+<h2 id="code">Code</h2>
+<p>Run code from the code cells by pressing <code>Shift+Enter</code></p>
+<pre><code>In [1]:  for i in range(50):
+             print(i)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+...
+</code></pre><h2 id="document-code">Document code</h2>
+<p>Document code in cells that precede or follow the code cells with markdown.</p>
+<p><img src="http://community.datacamp.com.s3.amazonaws.com/community/production/ckeditor_assets/pictures/202/content_jupyternotebook7.gif" alt=""></p>
+<h2 id="further">Further</h2>
+<p>Official documentation is available <a href="https://jupyter-notebook.readthedocs.io" target="_blank">here</a>.</p>
 
                                 
                                 </section>
@@ -328,14 +368,10 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="python-circle.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Circle Object">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="python.html" class="navigation navigation-next " aria-label="Next page: Data analysis tutorial">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -344,7 +380,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2","depth":1,"next":{"title":"Data analysis tutorial","level":"1.3","depth":1,"path":"pages/python.md","ref":"pages/python.md","articles":[{"title":"Data cleaning","level":"1.3.1","depth":2,"path":"pages/python-datacleaning.md","ref":"pages/python-datacleaning.md","articles":[]},{"title":"Data manipulation","level":"1.3.2","depth":2,"path":"pages/python-datamanipulation.md","ref":"pages/python-datamanipulation.md","articles":[]},{"title":"Visualisation","level":"1.3.3","depth":2,"path":"pages/python-datavis.md","ref":"pages/python-datavis.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/getting-started.md","mtime":"2018-11-11T20:10:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T22:00:58.135Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Jupyter notebooks","level":"1.5","depth":1,"previous":{"title":"Circle Object","level":"1.4.1","depth":2,"path":"pages/python-circle.md","ref":"pages/python-circle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/jupyter.md","mtime":"2018-11-12T23:35:31.797Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-12T23:39:36.008Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
